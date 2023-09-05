@@ -18,12 +18,7 @@ jobs:
       - name: Run tests
         run: |
             yarn install
-            yarn global add @nestjs/cli \
-            && yarn add @nestjs/common \
-
-            nest new project-name \
-            cd project-name \
-            npm install --save @nestjs/typeorm typeorm mysql \
-            npm install --save @nestjs/swagger swagger-ui-express \
-            nest g resource products
-            yarn run build
+            yarn global add @nestjs/cli
+            yarn add @nestjs/common
+            yarn add @nestjs/typeorm typeorm mysql
+            yarn add @nestjs/swagger swagger-ui-express
