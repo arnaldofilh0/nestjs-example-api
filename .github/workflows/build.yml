@@ -1,0 +1,29 @@
+name: 'NestJS Example Build'
+
+on: [push]
+
+jobs:
+  continuous-integration:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+
+      - name: Install dependencies
+        run: yarn install
+      - name: Run tests
+        run: |
+            yarn install
+            yarn global add @nestjs/cli \
+            && yarn add @nestjs/common \
+
+            nest new project-name \
+            cd project-name \
+            npm install --save @nestjs/typeorm typeorm mysql \
+            npm install --save @nestjs/swagger swagger-ui-express \
+            nest g resource products
+            yarn run build
